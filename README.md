@@ -85,8 +85,7 @@ ApplyX/
 │   ├── package-lock.json
 │   ├── postcss.config.js
 │   ├── tailwind.config.js
-│   ├── vite.config.js
-│   └── README.md
+│   └── vite.config.js
 │
 └── README.md
 ```
@@ -147,12 +146,6 @@ cd frontend
 npm install
 npm run dev
 ```
-
----
-
-## 📸 Screenshots (Optional)
-
-*Add screenshots of UI here*
 
 ---
 
