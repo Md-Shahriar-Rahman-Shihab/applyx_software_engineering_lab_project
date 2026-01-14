@@ -17,6 +17,7 @@ Students can explore jobs, apply with their CV, manage profiles and skills, whil
 * Browse available jobs
 * Apply for jobs
 * Track applied jobs
+* Learn new technology 
 
 ### 🧑‍💼 Recruiter Features
 
