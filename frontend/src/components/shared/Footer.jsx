@@ -67,7 +67,7 @@ export default function Footer() {
                                     className="w-full h-full pl-6 outline-none text-sm bg-transparent text-slate-700 placeholder-slate-400"
                                 />
                                 <button
-                                    className="bg-indigo-600 hover:bg-indigo-700 active:scale-95 transition w-36 h-9 rounded-full text-sm text-white mr-1.5"
+                                    className="bg-[#6A38C2] hover:bg-indigo-700 active:scale-95 transition w-36 h-9 rounded-full text-sm text-white mr-1.5"
                                 >
                                     Subscribe
                                 </button>
