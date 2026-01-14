@@ -11,7 +11,7 @@ export default function AboutApplyX() {
                 }
             `}</style>
 
-            <h1 className="text-3xl font-semibold text-center mx-auto pt-16">
+            <h1 className="text-3xl font-semibold text-center mx-auto  mt-16">
                 About Apply<span className="text-[#F83002]">X</span>
             </h1>
 

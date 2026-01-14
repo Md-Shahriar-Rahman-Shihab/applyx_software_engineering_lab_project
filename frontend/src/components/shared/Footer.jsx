@@ -8,8 +8,11 @@ export default function Footer() {
                 }
             `}</style>
 
-            <footer className="bg-[#FFFBEA] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#E8E3D5]">
-                <div className="w-full max-w-7xl mx-auto">
+            {/* FULL WIDTH FOOTER */}
+            <footer className="bg-white border-t border-[#E8E3D5]">
+                
+                {/* CONTENT WRAPPER (same as navbar width) */}
+                <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
                     <div className="flex flex-wrap justify-between gap-y-12 lg:gap-x-8">
 
@@ -19,7 +22,7 @@ export default function Footer() {
                                 Apply<span className="text-[#F83002]">X</span>
                             </h1>
 
-                            <div className="w-full max-w-52 h-px mt-8 bg-linear-to-r from-[#FFFBEA] via-[#E8E3D5] to-[#FFFBEA]"></div>
+                            <div className="w-full max-w-52 h-px mt-8 bg-linear-to-r from-white via-[#E8E3D5] to-white"></div>
 
                             <p className="text-sm text-slate-600 mt-6 max-w-sm leading-relaxed">
                                 ApplyX is a modern job hunting platform built with the MERN stack,
@@ -76,7 +79,7 @@ export default function Footer() {
 
                     </div>
 
-                    {/* Divider */}
+                    {/* INNER DIVIDER (content width only) */}
                     <div className="w-full h-px mt-16 mb-4 bg-[#E8E3D5]"></div>
 
                     {/* Bottom */}

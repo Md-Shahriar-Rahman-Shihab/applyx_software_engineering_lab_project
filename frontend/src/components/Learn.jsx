@@ -5,7 +5,7 @@ export default function Learn() {
     const [activeVideo, setActiveVideo] = useState(null);
 
     const courses = [
-        { title: "HTML Full Course", videoId: "qz0aGYrrlhU" },
+        { title: "HTML Full Course", videoId: "kUMe1FH4CHE" },
         { title: "CSS Full Course", videoId: "OXGznpKZ_sA" },
         { title: "JavaScript Full Course", videoId: "PkZNo7MFNFg" },
         { title: "React Full Course", videoId: "bMknfKXIFA8" },
@@ -35,7 +35,7 @@ export default function Learn() {
     return (
         <>
         <Navbar/>
-        <section className="max-w-7xl mx-auto px-6 pt-12 pb-24">
+        <section className="max-w-6xl mx-auto px-6  pb-24 mt-16">
 
             {/* Header */}
             <div className="text-center max-w-2xl mx-auto">
