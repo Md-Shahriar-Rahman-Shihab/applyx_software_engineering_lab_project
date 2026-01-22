@@ -55,8 +55,10 @@ const Navbar = () => {
                     <Link className="hover:text-indigo-600" to="/">Home</Link>
                     <Link className="hover:text-indigo-600" to="/jobs">Jobs</Link>
                     <Link className="hover:text-indigo-600" to="/browse">Browse</Link>
-                    <Link className="hover:text-indigo-600" to="/about-us">About Us</Link>
                     <Link className="hover:text-indigo-600" to="/learn">Learn</Link>
+                    <Link className="hover:text-indigo-600" to="http://localhost:8501/">Resume</Link>
+                    <Link className="hover:text-indigo-600" to="/about-us">About Us</Link>
+                    
 
                     {/* Mobile Close */}
                     <button

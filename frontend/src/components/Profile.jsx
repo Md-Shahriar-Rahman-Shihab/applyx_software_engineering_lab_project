@@ -1,72 +1,134 @@
-import React, { useState } from 'react'
-import Navbar from './shared/Navbar'
-import { Avatar, AvatarImage } from './ui/avatar'
-import { Button } from './ui/button'
-import { Contact, Mail, Pen } from 'lucide-react'
-import { Badge } from './ui/badge'
-import { Label } from './ui/label'
-import AppliedJobTable from './AppliedJobTable'
-import UpdateProfileDialog from './UpdateProfileDialog'
-import { useSelector } from 'react-redux'
-import useGetAppliedJobs from '@/hooks/useGetAppliedJobs'
-
-// const skills = ["Html", "Css", "Javascript", "Reactjs"]
-const isResume = true;
+import React, { useState } from 'react';
+import Navbar from './shared/Navbar';
+import { Avatar, AvatarImage } from './ui/avatar';
+import { Button } from './ui/button';
+import { Contact, Mail, Pen } from 'lucide-react';
+import { Badge } from './ui/badge';
+import { Label } from './ui/label';
+import AppliedJobTable from './AppliedJobTable';
+import UpdateProfileDialog from './UpdateProfileDialog';
+import { useSelector } from 'react-redux';
+import useGetAppliedJobs from '@/hooks/useGetAppliedJobs';
+import { motion } from 'framer-motion';
 
 const Profile = () => {
     useGetAppliedJobs();
     const [open, setOpen] = useState(false);
-    const {user} = useSelector(store=>store.auth);
+    const { user } = useSelector(store => store.auth);
 
     return (
-        <div>
+        <div className="min-h-screen bg-white">
             <Navbar />
-            <div className='max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl my-5 p-8'>
-                <div className='flex justify-between'>
-                    <div className='flex items-center gap-4'>
-                        <Avatar className="h-24 w-24">
-                            <AvatarImage src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg" alt="profile" />
-                        </Avatar>
-                        <div>
-                            <h1 className='font-medium text-xl'>{user?.fullname}</h1>
-                            <p>{user?.profile?.bio}</p>
+
+            {/* PROFILE CARD */}
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="max-w-5xl mx-auto mt-10 px-4"
+            >
+                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-[1px] shadow-2xl">
+                    <div className="bg-white rounded-3xl p-10">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+                            <div className="flex items-center gap-6">
+                                <Avatar className="h-28 w-28 ring-4 ring-violet-200">
+                                    <AvatarImage
+                                        src={
+                                            user?.profile?.profilePhoto ||
+                                            "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"
+                                        }
+                                        alt="profile"
+                                    />
+                                </Avatar>
+
+                                <div>
+                                    <h1 className="text-3xl font-bold text-gray-900">
+                                        {user?.fullname}
+                                    </h1>
+                                    <p className="text-gray-600 mt-1 max-w-md">
+                                        {user?.profile?.bio || "No bio added yet"}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <Button
+                                onClick={() => setOpen(true)}
+                                variant="outline"
+                                className="rounded-xl px-6 py-5 hover:bg-gray-100"
+                            >
+                                <Pen className="mr-2 h-4 w-4" />
+                                Edit Profile
+                            </Button>
+                        </div>
+
+                        {/* CONTACT INFO */}
+                        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <Info icon={<Mail />} text={user?.email} />
+                            <Info icon={<Contact />} text={user?.phoneNumber || "Not added"} />
+                        </div>
+
+                        {/* SKILLS */}
+                        <div className="mt-10">
+                            <h2 className="font-semibold text-lg mb-4">Skills</h2>
+                            <div className="flex flex-wrap gap-2">
+                                {user?.profile?.skills?.length > 0 ? (
+                                    user.profile.skills.map((skill, index) => (
+                                        <Badge
+                                            key={index}
+                                            className="bg-violet-100 text-violet-700 px-4 py-1 text-sm font-medium"
+                                        >
+                                            {skill}
+                                        </Badge>
+                                    ))
+                                ) : (
+                                    <span className="text-gray-500">No skills added</span>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* RESUME */}
+                        <div className="mt-10 bg-gray-50 rounded-2xl p-6">
+                            <Label className="text-base font-semibold">Resume</Label>
+                            {user?.profile?.resume ? (
+                                <a
+                                    href={user.profile.resume}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block mt-2 text-indigo-600 hover:underline font-medium"
+                                >
+                                    {user.profile.resumeOriginalName}
+                                </a>
+                            ) : (
+                                <p className="text-gray-500 mt-2">No resume uploaded</p>
+                            )}
                         </div>
                     </div>
-                    <Button onClick={() => setOpen(true)} className="text-right" variant="outline"><Pen /></Button>
                 </div>
-                <div className='my-5'>
-                    <div className='flex items-center gap-3 my-2'>
-                        <Mail />
-                        <span>{user?.email}</span>
-                    </div>
-                    <div className='flex items-center gap-3 my-2'>
-                        <Contact />
-                        <span>{user?.phoneNumber}</span>
-                    </div>
-                </div>
-                <div className='my-5'>
-                    <h1>Skills</h1>
-                    <div className='flex items-center gap-1'>
-                        {
-                            user?.profile?.skills.length !== 0 ? user?.profile?.skills.map((item, index) => <Badge key={index}>{item}</Badge>) : <span>NA</span>
-                        }
-                    </div>
-                </div>
-                <div className='grid w-full max-w-sm items-center gap-1.5'>
-                    <Label className="text-md font-bold">Resume</Label>
-                    {
-                        isResume ? <a target='blank' href={user?.profile?.resume} className='text-blue-500 w-full hover:underline cursor-pointer'>{user?.profile?.resumeOriginalName}</a> : <span>NA</span>
-                    }
-                </div>
-            </div>
-            <div className='max-w-4xl mx-auto bg-white rounded-2xl'>
-                <h1 className='font-bold text-lg my-5'>Applied Jobs</h1>
-                {/* Applied Job Table   */}
-                <AppliedJobTable />
-            </div>
-            <UpdateProfileDialog open={open} setOpen={setOpen}/>
-        </div>
-    )
-}
+            </motion.div>
 
-export default Profile
+            {/* APPLIED JOBS */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="max-w-5xl mx-auto mt-14 px-4"
+            >
+                <div className="bg-white rounded-3xl shadow-xl p-8">
+                    <h1 className="text-2xl font-bold mb-6">Applied Jobs</h1>
+                    <AppliedJobTable />
+                </div>
+            </motion.div>
+
+            <UpdateProfileDialog open={open} setOpen={setOpen} />
+        </div>
+    );
+};
+
+const Info = ({ icon, text }) => (
+    <div className="flex items-center gap-3 text-gray-700">
+        <div className="p-2 rounded-lg bg-gray-100">{icon}</div>
+        <span className="font-medium">{text}</span>
+    </div>
+);
+
+export default Profile;

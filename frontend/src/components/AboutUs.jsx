@@ -1,119 +1,113 @@
 import Navbar from "./shared/Navbar";
+import { Briefcase, Users, ShieldCheck, Rocket, Search, Layout } from "lucide-react";
 
 export default function AboutApplyX() {
     return (
         <>
-            <Navbar/>
-            <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-                * {
-                    font-family: 'Poppins', sans-serif;
-                }
-            `}</style>
+            <Navbar />
 
-            <h1 className="text-3xl font-semibold text-center mx-auto  mt-16">
-                About Apply<span className="text-[#F83002]">X</span>
-            </h1>
+            <section className="relative bg-white mt-2 pt-20 pb-28">
+                {/* Hero */}
+                <div className="max-w-4xl mx-auto text-center px-6">
+                    <h1 className="text-4xl font-bold text-gray-900">
+                        About Apply<span className="text-[#F83002]">X</span>
+                    </h1>
+                    <p className="text-gray-600 mt-4 text-lg leading-relaxed">
+                        ApplyX is a smart job-hunting platform designed to connect
+                        talented candidates with the right opportunities — faster,
+                        simpler, and more efficiently.
+                    </p>
+                </div>
 
-            <p className="text-sm text-slate-500 text-center mt-2 max-w-lg mx-auto">
-                ApplyX is a modern job hunting platform that connects job seekers with the right opportunities faster and smarter.
-            </p>
+                {/* Glow background */}
+                <div className="absolute top-32 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-[#F83002]/10 blur-[220px] -z-10" />
 
-            <div className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 px-8 md:px-0 pt-16">
+                {/* Stats */}
+                <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 px-6">
+                    <Stat title="10K+" desc="Job Seekers" />
+                    <Stat title="2K+" desc="Active Jobs" />
+                    <Stat title="500+" desc="Companies" />
+                </div>
 
-                <div className="size-[520px] -top-80 left-1/2 -translate-x-1/2 rounded-full absolute blur-[300px] -z-10 bg-white"></div>
+                {/* Features */}
+                <div className="max-w-6xl mx-auto mt-20 px-6">
+                    <h2 className="text-2xl font-semibold text-gray-900 text-center">
+                        Why Choose ApplyX?
+                    </h2>
+                    <p className="text-gray-500 text-center mt-2 max-w-2xl mx-auto">
+                        Built with modern technologies to deliver a seamless
+                        experience for both candidates and recruiters.
+                    </p>
 
-                {/* Feature 1 */}
-                <div>
-                    <div className="size-10 p-2 bg-indigo-50 border border-indigo-200 rounded">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/flashEmoji.png" alt="" />
-                    </div>
-                    <div className="mt-5 space-y-2">
-                        <h3 className="text-base font-medium text-slate-600">
-                            Fast Job Search
-                        </h3>
-                        <p className="text-sm text-slate-500">
-                            Quickly find relevant jobs using smart filters and real-time listings.
-                        </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-14">
+                        <Feature
+                            icon={<Search />}
+                            title="Fast Job Discovery"
+                            desc="Find relevant jobs instantly using advanced filters and real-time listings."
+                        />
+                        <Feature
+                            icon={<Layout />}
+                            title="Modern & Clean UI"
+                            desc="A distraction-free interface that keeps your job search smooth and simple."
+                        />
+                        <Feature
+                            icon={<Rocket />}
+                            title="Quick Apply"
+                            desc="Apply to jobs in seconds with an optimized application process."
+                        />
+                        <Feature
+                            icon={<Briefcase />}
+                            title="Recruiter Tools"
+                            desc="Powerful dashboards for employers to post jobs and manage applicants."
+                        />
+                        <Feature
+                            icon={<Users />}
+                            title="Candidate Profiles"
+                            desc="Showcase skills, resume, and experience with a professional profile."
+                        />
+                        <Feature
+                            icon={<ShieldCheck />}
+                            title="Secure Platform"
+                            desc="JWT authentication, role-based access, and secure data handling."
+                        />
                     </div>
                 </div>
 
-                {/* Feature 2 */}
-                <div>
-                    <div className="size-10 p-2 bg-indigo-50 border border-indigo-200 rounded">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/colorsEmoji.png" alt="" />
-                    </div>
-                    <div className="mt-5 space-y-2">
-                        <h3 className="text-base font-medium text-slate-600">
-                            Clean & Modern UI
+                {/* Mission */}
+                <div className="max-w-5xl mx-auto mt-24 px-6">
+                    <div className="bg-white rounded-2xl shadow-md p-10 text-center">
+                        <h3 className="text-2xl font-semibold text-gray-900">
+                            Our Mission
                         </h3>
-                        <p className="text-sm text-slate-500">
-                            A simple, user-friendly interface designed for both recruiters and candidates.
+                        <p className="text-gray-600 mt-4 leading-relaxed max-w-3xl mx-auto">
+                            Our mission is to reduce the gap between talent and opportunity.
+                            ApplyX empowers job seekers with clarity and recruiters with the
+                            right tools — creating meaningful career connections.
                         </p>
                     </div>
                 </div>
-
-                {/* Feature 3 */}
-                <div>
-                    <div className="size-10 p-2 bg-indigo-50 border border-indigo-200 rounded">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/puzzelEmoji.png" alt="" />
-                    </div>
-                    <div className="mt-5 space-y-2">
-                        <h3 className="text-base font-medium text-slate-600">
-                            Easy Application Process
-                        </h3>
-                        <p className="text-sm text-slate-500">
-                            Apply to jobs in just a few clicks with a streamlined application flow.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 4 */}
-                <div>
-                    <div className="size-10 p-2 bg-indigo-50 border border-indigo-200 rounded">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/bookEmoji.png" alt="" />
-                    </div>
-                    <div className="mt-5 space-y-2">
-                        <h3 className="text-base font-medium text-slate-600">
-                            Company Insights
-                        </h3>
-                        <p className="text-sm text-slate-500">
-                            Learn about companies, job roles and requirements before applying.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 5 */}
-                <div>
-                    <div className="size-10 p-2 bg-indigo-50 border border-indigo-200 rounded">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/boxEmoji.png" alt="" />
-                    </div>
-                    <div className="mt-5 space-y-2">
-                        <h3 className="text-base font-medium text-slate-600">
-                            Recruiter Dashboard
-                        </h3>
-                        <p className="text-sm text-slate-500">
-                            Employers can easily post jobs, manage applications and hire talent.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 6 */}
-                <div>
-                    <div className="size-10 p-2 bg-indigo-50 border border-indigo-200 rounded">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/brainEmoji.png" alt="" />
-                    </div>
-                    <div className="mt-5 space-y-2">
-                        <h3 className="text-base font-medium text-slate-600">
-                            Secure & Reliable
-                        </h3>
-                        <p className="text-sm text-slate-500">
-                            Authentication, role-based access and secure data handling built-in.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
+            </section>
         </>
     );
 }
+
+/* Reusable Components */
+
+const Feature = ({ icon, title, desc }) => (
+    <div className="flex gap-4">
+        <div className="p-3 rounded-xl bg-[#F83002]/10 text-[#F83002]">
+            {icon}
+        </div>
+        <div>
+            <h3 className="font-semibold text-gray-800">{title}</h3>
+            <p className="text-sm text-gray-500 mt-1">{desc}</p>
+        </div>
+    </div>
+);
+
+const Stat = ({ title, desc }) => (
+    <div className="bg-white rounded-xl shadow-sm p-6 text-center">
+        <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
+        <p className="text-gray-500 mt-1">{desc}</p>
+    </div>
+);
