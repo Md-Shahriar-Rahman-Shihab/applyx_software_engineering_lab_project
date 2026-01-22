@@ -8,6 +8,7 @@ import { setSingleJob } from '@/redux/jobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
+import Navbar from './shared/Navbar';
 
 const JobDescription = () => {
     const { singleJob } = useSelector(store => store.job);
@@ -70,10 +71,11 @@ const JobDescription = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-7xl mx-auto my-14 px-4"
+            className="max-w-6xl mx-auto my-14 px-4 "
         >
+            <Navbar/>
             {/* HERO CARD */}
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-[1px]">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-[1px] mt-8">
                 <div className="bg-white rounded-3xl p-10">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
                         <div>
