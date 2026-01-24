@@ -73,8 +73,9 @@ const Navbar = () => {
             {/* Recruiter Menu */}
             {user?.role === "recruiter" && (
                 <nav className="hidden md:flex items-center gap-6">
-                    <Link to="/admin/companies">Companies</Link>
-                    <Link to="/admin/jobs">Jobs</Link>
+                    <Link className="hover:text-indigo-600" to="/admin/companies">Companies</Link>
+                    <Link className="hover:text-indigo-600" to="/admin/jobs">Jobs</Link>
+                    <Link className="hover:text-indigo-600" to="http://localhost:8501/">Resume</Link>
                 </nav>
             )}
 
