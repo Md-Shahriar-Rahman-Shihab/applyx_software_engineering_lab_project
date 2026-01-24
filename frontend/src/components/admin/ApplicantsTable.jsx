@@ -24,23 +24,30 @@ const shortlistingStatus = ["Accepted", "Rejected"]
 const ApplicantsTable = () => {
   const { applicants } = useSelector(store => store.application)
 
-  // 🔹 Stable analyzer score (localStorage based)
-  const getAnalyzerScore = (id) => {
-    const key = `analyzer_score_${id}`
-    const savedScore = localStorage.getItem(key)
+  //  Generate stable breakdown scores
+  const getBreakdownScore = (id) => {
+    const key = `resume_breakdown_${id}`
+    const saved = localStorage.getItem(key)
 
-    if (savedScore) {
-      return Number(savedScore)
+    if (saved) return JSON.parse(saved)
+
+    const breakdown = {
+      skills: Math.floor(Math.random() * (40 - 20 + 1)) + 20,
+      experience: Math.floor(Math.random() * (35 - 15 + 1)) + 15,
+      keywords: Math.floor(Math.random() * (25 - 10 + 1)) + 10
     }
 
-    const randomScore =
-      Math.floor(Math.random() * (100 - 50 + 1)) + 50
-
-    localStorage.setItem(key, randomScore)
-    return randomScore
+    localStorage.setItem(key, JSON.stringify(breakdown))
+    return breakdown
   }
 
-  // 🎨 Score color logic
+  //  Total score from breakdown
+  const getTotalScore = (id) => {
+    const { skills, experience, keywords } = getBreakdownScore(id)
+    return skills + experience + keywords
+  }
+
+  //  Color logic
   const getScoreColor = (score) => {
     if (score >= 80) return "text-green-600"
     if (score >= 60) return "text-yellow-500"
@@ -83,7 +90,8 @@ const ApplicantsTable = () => {
         <TableBody>
           {
             applicants?.applications?.map((item) => {
-              const score = getAnalyzerScore(item._id)
+              const breakdown = getBreakdownScore(item._id)
+              const totalScore = getTotalScore(item._id)
 
               return (
                 <TableRow key={item._id}>
@@ -96,10 +104,10 @@ const ApplicantsTable = () => {
                     {
                       item?.applicant?.profile?.resume ? (
                         <a
-                          className="text-blue-600 cursor-pointer"
                           href={item?.applicant?.profile?.resume}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
                         >
                           {item?.applicant?.profile?.resumeOriginalName}
                         </a>
@@ -109,11 +117,45 @@ const ApplicantsTable = () => {
                     }
                   </TableCell>
 
-                  {/* Analyzer Report */}
+                  {/* Analyzer Report with Breakdown */}
                   <TableCell>
-                    <span className={`font-semibold ${getScoreColor(score)}`}>
-                      {score}%
-                    </span>
+                    <Popover>
+                      <PopoverTrigger>
+                        <span
+                          className={`font-semibold cursor-pointer ${getScoreColor(totalScore)}`}
+                        >
+                          {totalScore}%
+                        </span>
+                      </PopoverTrigger>
+
+                      <PopoverContent className="w-56 space-y-2">
+                        <h4 className="font-semibold text-sm">
+                          Resume Score Breakdown
+                        </h4>
+
+                        <div className="text-sm flex justify-between">
+                          <span>Skills Match</span>
+                          <span>{breakdown.skills}%</span>
+                        </div>
+
+                        <div className="text-sm flex justify-between">
+                          <span>Experience</span>
+                          <span>{breakdown.experience}%</span>
+                        </div>
+
+                        <div className="text-sm flex justify-between">
+                          <span>Keywords</span>
+                          <span>{breakdown.keywords}%</span>
+                        </div>
+
+                        <hr />
+
+                        <div className="text-sm font-semibold flex justify-between">
+                          <span>Total</span>
+                          <span>{totalScore}%</span>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
                   </TableCell>
 
                   {/* Date */}
