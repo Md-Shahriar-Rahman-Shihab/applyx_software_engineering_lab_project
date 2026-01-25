@@ -36,7 +36,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="mx-auto mt-4 max-w-6xl rounded-full bg-white shadow px-6 py-3 flex items-center justify-between relative">
+        <header className="mx-auto max-w-6xl rounded-full bg-white shadow px-6 py-3 flex items-center justify-between relative text-sm ">
             
             {/* Logo */}
             <Link to="/" className="text-2xl font-bold">

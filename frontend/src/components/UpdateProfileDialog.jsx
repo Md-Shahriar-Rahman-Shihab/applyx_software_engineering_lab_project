@@ -146,7 +146,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                     </div>
 
                     <DialogFooter>
-                        <Button type="submit" className="w-full" disabled={loading}>
+                        <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700" disabled={loading}>
                             {loading && (
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                             )}

@@ -18,8 +18,10 @@ const Browse = () => {
     },[])
     return (
         <div>
+        <div className="pt-6">
             <Navbar />
-            <div className='max-w-6xl mx-auto my-10 mt-20'>
+        </div>
+            <div className='max-w-6xl mx-auto my-10 mt-16'>
                 <h1 className='font-bold text-xl my-10'>Search Results ({allJobs.length})</h1>
                 <div className='grid grid-cols-3 gap-4'>
                     {

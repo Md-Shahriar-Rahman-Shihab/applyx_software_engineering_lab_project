@@ -1,12 +1,15 @@
+import { useEffect, useState } from "react";
 import Navbar from "./shared/Navbar";
 import { Briefcase, Users, ShieldCheck, Rocket, Search, Layout } from "lucide-react";
 
 export default function AboutApplyX() {
     return (
         <>
-            <Navbar />
+            <div className="pt-6">
+                <Navbar />
+            </div>
 
-            <section className="relative bg-white mt-2 pt-20 pb-28">
+            <section className="relative bg-white mt-2 pt-16 pb-28">
                 {/* Hero */}
                 <div className="max-w-4xl mx-auto text-center px-6">
                     <h1 className="text-4xl font-bold text-gray-900">
@@ -24,9 +27,9 @@ export default function AboutApplyX() {
 
                 {/* Stats */}
                 <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 px-6">
-                    <Stat title="10K+" desc="Job Seekers" />
-                    <Stat title="2K+" desc="Active Jobs" />
-                    <Stat title="500+" desc="Companies" />
+                    <Stat end={10000} label="Job Seekers" suffix="+" />
+                    <Stat end={2000} label="Active Jobs" suffix="+" />
+                    <Stat end={500} label="Companies" suffix="+" />
                 </div>
 
                 {/* Features */}
@@ -40,36 +43,12 @@ export default function AboutApplyX() {
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-14">
-                        <Feature
-                            icon={<Search />}
-                            title="Fast Job Discovery"
-                            desc="Find relevant jobs instantly using advanced filters and real-time listings."
-                        />
-                        <Feature
-                            icon={<Layout />}
-                            title="Modern & Clean UI"
-                            desc="A distraction-free interface that keeps your job search smooth and simple."
-                        />
-                        <Feature
-                            icon={<Rocket />}
-                            title="Quick Apply"
-                            desc="Apply to jobs in seconds with an optimized application process."
-                        />
-                        <Feature
-                            icon={<Briefcase />}
-                            title="Recruiter Tools"
-                            desc="Powerful dashboards for employers to post jobs and manage applicants."
-                        />
-                        <Feature
-                            icon={<Users />}
-                            title="Candidate Profiles"
-                            desc="Showcase skills, resume, and experience with a professional profile."
-                        />
-                        <Feature
-                            icon={<ShieldCheck />}
-                            title="Secure Platform"
-                            desc="JWT authentication, role-based access, and secure data handling."
-                        />
+                        <Feature icon={<Search />} title="Fast Job Discovery" desc="Find relevant jobs instantly using advanced filters and real-time listings." />
+                        <Feature icon={<Layout />} title="Modern & Clean UI" desc="A distraction-free interface that keeps your job search smooth and simple." />
+                        <Feature icon={<Rocket />} title="Quick Apply" desc="Apply to jobs in seconds with an optimized application process." />
+                        <Feature icon={<Briefcase />} title="Recruiter Tools" desc="Powerful dashboards for employers to post jobs and manage applicants." />
+                        <Feature icon={<Users />} title="Candidate Profiles" desc="Showcase skills, resume, and experience with a professional profile." />
+                        <Feature icon={<ShieldCheck />} title="Secure Platform" desc="JWT authentication, role-based access, and secure data handling." />
                     </div>
                 </div>
 
@@ -91,7 +70,7 @@ export default function AboutApplyX() {
     );
 }
 
-/* Reusable Components */
+/* ================= Reusable Components ================= */
 
 const Feature = ({ icon, title, desc }) => (
     <div className="flex gap-4">
@@ -105,9 +84,38 @@ const Feature = ({ icon, title, desc }) => (
     </div>
 );
 
-const Stat = ({ title, desc }) => (
-    <div className="bg-white rounded-xl shadow-sm p-6 text-center">
-        <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
-        <p className="text-gray-500 mt-1">{desc}</p>
-    </div>
-);
+/* Animated Counter Stat */
+const Stat = ({ end, label, suffix = "" }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let start = 0;
+        const duration = 1500; // ms
+        const increment = end / (duration / 16);
+
+        const counter = setInterval(() => {
+            start += increment;
+            if (start >= end) {
+                setCount(end);
+                clearInterval(counter);
+            } else {
+                setCount(Math.floor(start));
+            }
+        }, 16);
+
+        return () => clearInterval(counter);
+    }, [end]);
+
+    return (
+        <div className="
+            bg-white rounded-xl p-6 text-center
+            shadow-md hover:shadow-xl hover:-translate-y-1
+            transition-all duration-300
+        ">
+            <h3 className="text-3xl font-bold text-gray-900">
+                {count.toLocaleString()}{suffix}
+            </h3>
+            <p className="text-gray-500 mt-1">{label}</p>
+        </div>
+    );
+};

@@ -16,7 +16,7 @@ const HeroSection = () => {
     }
 
     return (
-        <section className="bg-white pt-24 pb-12">
+        <section className=" pt-24 pb-12 ">
             <div className="max-w-5xl mx-auto px-6 text-center">
 
                 {/* Badge */}

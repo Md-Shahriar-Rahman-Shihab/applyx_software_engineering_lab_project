@@ -34,8 +34,10 @@ export default function Learn() {
 
     return (
         <>
-        <Navbar/>
-        <section className="max-w-6xl mx-auto px-6  pb-24 mt-16">
+        <div className="pt-6">
+            <Navbar />
+        </div>
+        <section className="max-w-6xl mx-auto px-6 pb-24 mt-12">
 
             {/* Header */}
             <div className="text-center max-w-2xl mx-auto">

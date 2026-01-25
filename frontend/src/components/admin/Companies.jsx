@@ -21,7 +21,9 @@ const Companies = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      <div className="pt-6">
+          <Navbar />
+      </div>
 
       {/* MAIN CONTAINER */}
       <div className="max-w-6xl mx-auto px-4 py-10">

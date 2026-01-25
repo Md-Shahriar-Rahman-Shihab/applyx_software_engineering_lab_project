@@ -19,8 +19,8 @@ const Home = () => {
       navigate("/admin/companies");
     }
   }, []);
-  return (
-    <div>
+return (
+  <div className="bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/bg-gradient.png')] bg-cover text-sm text-gray-800 max-md:px-4 text-center h-[785px] pt-6">
       <Navbar />
       <HeroSection />
       <CategoryCarousel />

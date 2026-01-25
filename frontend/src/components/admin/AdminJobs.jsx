@@ -20,8 +20,10 @@ const AdminJobs = () => {
   }, [input])
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Navbar />
+    <div className="min-h-screen bg-white">
+      <div className="pt-6">
+        <Navbar />
+      </div>
 
       <div className="max-w-6xl mx-auto px-4 py-10">
         {/* Header */}

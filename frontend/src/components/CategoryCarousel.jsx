@@ -29,7 +29,7 @@ const CategoryCarousel = () => {
     }
 
     return (
-        <section className="bg-white">
+        <section className="">
             <div className="max-w-5xl mx-auto px-6 pb-12">
 
                 <Carousel className="w-full">

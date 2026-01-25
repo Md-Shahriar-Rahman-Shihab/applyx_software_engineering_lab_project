@@ -9,7 +9,7 @@ export default function Footer() {
             `}</style>
 
             {/* FULL WIDTH FOOTER */}
-            <footer className="bg-white border-t border-[#E8E3D5]">
+            <footer className=" border-t border-[#E8E3D5]">
                 
                 {/* CONTENT WRAPPER (same as navbar width) */}
                 <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

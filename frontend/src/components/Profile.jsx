@@ -18,7 +18,9 @@ const Profile = () => {
 
     return (
         <div className="min-h-screen bg-white">
-            <Navbar />
+            <div className="pt-6">
+                <Navbar />
+            </div>
 
             {/* PROFILE CARD */}
             <motion.div

@@ -80,8 +80,11 @@ const CompanySetup = () => {
   }, [singleCompany])
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Navbar />
+    <div className="min-h-screen bg-white">
+    
+      <div className="pt-6">
+          <Navbar />
+      </div>
 
       <div className="max-w-3xl mx-auto mt-10 px-4">
         {/* Header */}
